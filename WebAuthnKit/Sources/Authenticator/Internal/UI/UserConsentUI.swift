@@ -51,7 +51,6 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
     
     internal func askUserToCreateNewCredential(rpId: String) -> Promise<()> {
         
-        print("NOA COHEN")
         WAKLogger.debug("<UserConsentUI> askUserToCreateNewCredential")
         
         self.willStartUserInteraction()
@@ -60,38 +59,38 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
 
             DispatchQueue.main.async {
 
-                let alert = UIAlertController.init(
-                    title:          self.config.excludeKeyFoundPopupTitle,
-                    message:        self.config.excludeKeyFoundPopupMessage,
-                    preferredStyle: .actionSheet
-                )
+//                let alert = UIAlertController.init(
+//                    title:          self.config.excludeKeyFoundPopupTitle,
+//                    message:        self.config.excludeKeyFoundPopupMessage,
+//                    preferredStyle: .actionSheet
+//                )
 
-                let okAction = UIAlertAction.init(title: self.config.excludeKeyFoundPopupCreateButtonText, style: .default) { _ in
-                    DispatchQueue.global().async {
-                        self.didFinishUserInteraction()
-                        if let reason = self.cancelled {
-                            resolver.reject(reason)
-                        } else {
+//                let okAction = UIAlertAction.init(title: self.config.excludeKeyFoundPopupCreateButtonText, style: .default) { _ in
+//                    DispatchQueue.global().async {
+//                        self.didFinishUserInteraction()
+//                        if let reason = self.cancelled {
+//                            resolver.reject(reason)
+//                        } else {
                             resolver.fulfill(())
-                        }
-                    }
-                }
+//                        }
+//                    }
+//                }
 
-                let cancelAction = UIAlertAction.init(title: self.config.excludeKeyFoundPopupCancelButtonText, style: .cancel) { _ in
-                    DispatchQueue.global().async {
-                        self.didFinishUserInteraction()
-                        if let reason = self.cancelled {
-                            resolver.reject(reason)
-                        } else {
-                            resolver.reject(WAKError.notAllowed)
-                        }
-                    }
-                }
-
-                alert.addAction(okAction)
-                alert.addAction(cancelAction)
-
-                self.viewController.present(alert, animated: true, completion: nil)
+//                let cancelAction = UIAlertAction.init(title: self.config.excludeKeyFoundPopupCancelButtonText, style: .cancel) { _ in
+//                    DispatchQueue.global().async {
+//                        self.didFinishUserInteraction()
+//                        if let reason = self.cancelled {
+//                            resolver.reject(reason)
+//                        } else {
+//                            resolver.reject(WAKError.notAllowed)
+//                        }
+//                    }
+//                }
+//
+//                alert.addAction(okAction)
+//                alert.addAction(cancelAction)
+//
+//                self.viewController.present(alert, animated: true, completion: nil)
             }
 
         }
