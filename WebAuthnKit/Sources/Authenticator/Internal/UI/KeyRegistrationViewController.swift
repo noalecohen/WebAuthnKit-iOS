@@ -354,7 +354,7 @@ public class KeyRegistrationViewController : UIViewController,
             rp: self.rp
         )
         self.detailView.delegate = self
-        self.delegate?.userDidRequestToCreateNewKey(keyName: "")
+        self.userDidRequestToCreateNewKey(keyName: "")
     }
     
     public func userDidCancel() {
@@ -369,7 +369,10 @@ public class KeyRegistrationViewController : UIViewController,
     }
     
     public func userDidRequestToCreateNewKey(keyName: String) {
-        self.resolver.fulfill(keyName)
+        self.delegate?.consentViewControllerWillDismiss(viewController: self)
+        dismiss(animated: true) {
+           self.resolver.fulfill(keyName)
+        }
     }
     
 }
