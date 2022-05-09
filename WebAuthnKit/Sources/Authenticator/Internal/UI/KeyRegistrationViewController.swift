@@ -275,7 +275,7 @@ class KeyDetailView: UIView, UITextFieldDelegate {
         return "\(self.user.name) (\(dateString))"
     }
     
-    public func getCurrentKeyName() -> String {
+    private func getCurrentKeyName() -> String {
         if let keyName = self.keyNameField.text {
             return keyName.isEmpty ? self.createDefaultKeyName() : keyName
         } else {
@@ -354,11 +354,7 @@ public class KeyRegistrationViewController : UIViewController,
             rp: self.rp
         )
         self.detailView.delegate = self
-        
-//        self.view.addSubview(self.detailView)
-        self.detailView.resignKeyNameField()
-        self.detailView.delegate?.userDidRequestToCreateNewKey(keyName: self.detailView.getCurrentKeyName())
-        
+        self.view.addSubview(self.detailView)
         var detailViewFrame = self.detailView.frame
         detailViewFrame.origin.x = (self.view.frame.width - detailViewFrame.width) / 2.0
         detailViewFrame.origin.y = (self.view.frame.height - detailViewFrame.height) / 2.0
