@@ -355,6 +355,7 @@ public class KeyRegistrationViewController : UIViewController,
         )
         self.detailView.delegate = self
 //        self.view.addSubview(self.detailView)
+        self.detailView.onCreateButtonTapped(nil)
         var detailViewFrame = self.detailView.frame
         detailViewFrame.origin.x = (self.view.frame.width - detailViewFrame.width) / 2.0
         detailViewFrame.origin.y = (self.view.frame.height - detailViewFrame.height) / 2.0
