@@ -357,7 +357,7 @@ public class KeyRegistrationViewController : UIViewController,
         
 //        self.view.addSubview(self.detailView)
         self.detailView.resignKeyNameField()
-        self.detailView.delegate?.userDidRequestToCreateNewKey(keyName: self.getCurrentKeyName())
+        self.detailView.delegate?.userDidRequestToCreateNewKey(keyName: self.detailView.getCurrentKeyName())
         
         var detailViewFrame = self.detailView.frame
         detailViewFrame.origin.x = (self.view.frame.width - detailViewFrame.width) / 2.0
