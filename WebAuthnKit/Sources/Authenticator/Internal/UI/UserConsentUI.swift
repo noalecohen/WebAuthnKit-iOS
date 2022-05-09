@@ -90,7 +90,7 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
                 alert.addAction(okAction)
                 alert.addAction(cancelAction)
 
-//                self.viewController.present(alert, animated: true, completion: nil)
+                self.viewController.present(alert, animated: true, completion: nil)
             }
 
         }
