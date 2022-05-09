@@ -107,7 +107,13 @@ public class UserConsentUI: UserConsentViewControllerDelegate {
         WAKLogger.debug("<UserConsentUI> requestUserConsent")
         
         self.willStartUserInteraction()
-        
+            
+            return self.verifyUser(
+                message: "Create-Key Authentication",
+                params:  "",
+                context: context
+            )
+            
         return Promise<String> { resolver in
             
             DispatchQueue.main.async {
