@@ -275,7 +275,7 @@ class KeyDetailView: UIView, UITextFieldDelegate {
         return "\(self.user.name) (\(dateString))"
     }
     
-    private func getCurrentKeyName() -> String {
+    public func getCurrentKeyName() -> String {
         if let keyName = self.keyNameField.text {
             return keyName.isEmpty ? self.createDefaultKeyName() : keyName
         } else {
