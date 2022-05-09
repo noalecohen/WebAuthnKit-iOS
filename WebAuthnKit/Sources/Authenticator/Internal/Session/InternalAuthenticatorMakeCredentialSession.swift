@@ -139,24 +139,24 @@ public class InternalAuthenticatorMakeCredentialSession : AuthenticatorMakeCrede
             ) != nil
         }
         
-//        if hasSourceToBeExcluded {
-//            firstly {
-//                self.ui.askUserToCreateNewCredential(rpId: rpEntity.id!)
-//            }.done {
-//                self.stop(by: .invalidState)
-//                return
-//            }.catch { error in
-//                switch error {
-//                case WAKError.notAllowed:
-//                    self.stop(by: .notAllowed)
-//                    return
-//                default:
-//                    self.stop(by: .unknown)
-//                    return
-//                }
-//            }
-//            return
-//        }
+        if hasSourceToBeExcluded {
+            firstly {
+                self.ui.askUserToCreateNewCredential(rpId: rpEntity.id!)
+            }.done {
+                self.stop(by: .invalidState)
+                return
+            }.catch { error in
+                switch error {
+                case WAKError.notAllowed:
+                    self.stop(by: .notAllowed)
+                    return
+                default:
+                    self.stop(by: .unknown)
+                    return
+                }
+            }
+            return
+        }
         
         if requireUserVerification && !self.setting.allowUserVerification {
             WAKLogger.debug("<MakeCredentialSession> insufficient capability (user verification), stop session")
