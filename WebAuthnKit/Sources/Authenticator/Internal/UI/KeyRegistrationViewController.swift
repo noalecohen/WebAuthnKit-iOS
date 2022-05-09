@@ -354,14 +354,7 @@ public class KeyRegistrationViewController : UIViewController,
             rp: self.rp
         )
         self.detailView.delegate = self
-        self.view.addSubview(self.detailView)
-        var detailViewFrame = self.detailView.frame
-        detailViewFrame.origin.x = (self.view.frame.width - detailViewFrame.width) / 2.0
-        detailViewFrame.origin.y = (self.view.frame.height - detailViewFrame.height) / 2.0
-        self.detailView.frame = detailViewFrame
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(type(of: self).onBackgroundViewTapped(_:)))
-        self.view.addGestureRecognizer(gesture)
+        self.delegate?.userDidRequestToCreateNewKey(keyName: "")
     }
     
     public func userDidCancel() {
@@ -376,10 +369,7 @@ public class KeyRegistrationViewController : UIViewController,
     }
     
     public func userDidRequestToCreateNewKey(keyName: String) {
-        self.delegate?.consentViewControllerWillDismiss(viewController: self)
-        dismiss(animated: true) {
-           self.resolver.fulfill(keyName)
-        }
+        self.resolver.fulfill(keyName)
     }
     
 }
